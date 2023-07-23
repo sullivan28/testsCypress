@@ -27,4 +27,25 @@ describe('Login', () => {
     cy.get('#descEscolaridade').should('contain','1grauincomp');
     cy.get('#descSugestoes').should('contain','Teste de Escrever');
     })
+
+    it('Login', () => {
+        cy.visit('https://www.aconox.com.br/login')
+        cy.get('#login_cliente').should('be.visible').type('teste@climba.com.br')
+        cy.get('.botao-finalizar-pedido').click()
+        cy.get('#senha_cliente').should('be.visible').type('12345678senha')
+        cy.get('.botao-finalizar-pedido').click()
+        })
+    it('Cadastro', () => {
+        cy.visit('https://www.aconox.com.br/login')
+        cy.get('#login_cliente').should('be.visible').type('teste@professor.com.br')
+        cy.get('.botao-finalizar-pedido').click() 
+        cy.get('#nome_cliente').should('be.visible').type('Pedrinho da Silva')
+        cy.get('#cpf_cliente').should('be.visible').type('08565367809')
+        cy.get('#data_n_cliente').should('be.visible').type('23/06/1980')
+        cy.get('#sexo_cliente').select('Masculino')
+        cy.get('#rg_cliente').should('be.visible').type('6103467')
+        cy.get('#senha_cliente').should('be.visible').type('senha123')
+        cy.get('#cep_cliente').should('be.visible').type('88870000')
+        cy.get('#confirmar-cep').click()
+    })
  })
